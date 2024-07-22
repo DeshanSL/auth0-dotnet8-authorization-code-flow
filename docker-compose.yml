@@ -1,0 +1,15 @@
+version: '3.4'
+
+services: 
+  auth0.sample.server:
+    image: ${DOCKER_REGISTRY-}auth0sampletestapi
+    container_name: auth0.sample.server
+    build:
+      context: .
+      dockerfile: src/Blazor/Server/src/Auth0.Sample.Server/Dockerfile
+  auth0.sample.testapi:
+    image: ${DOCKER_REGISTRY-}auth0sampletestapi
+    container_name: auth0.sample.test-api
+    build:
+      context: .
+      dockerfile: src/Apis/test-api/src/Auth0.Sample.TestApi/Dockerfile
