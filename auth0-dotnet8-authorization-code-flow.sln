@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apis", "Apis", "{65487DF9-3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApi", "TestApi", "{5673285A-860B-4DF1-8231-AB598E33A150}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Sample.TestApi", "src\Apis\test-api\src\Auth0.Sample.TestApi\Auth0.Sample.TestApi.csproj", "{857D947A-5FF1-4981-84F6-D5960BBD51DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.Sample.TestApi", "src\Apis\test-api\src\Auth0.Sample.TestApi\Auth0.Sample.TestApi.csproj", "{857D947A-5FF1-4981-84F6-D5960BBD51DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Sample.Server", "src\Blazor\Server\src\Auth0.Sample.Server\Auth0.Sample.Server.csproj", "{6C75D381-AAC5-41F5-B3CB-43013025FEE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.Sample.Server", "src\Blazor\Server\src\Auth0.Sample.Server\Auth0.Sample.Server.csproj", "{6C75D381-AAC5-41F5-B3CB-43013025FEE0}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1E632DF5-26D5-47B7-B8B7-05D8AE0DD135}"
 EndProject

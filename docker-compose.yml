@@ -2,7 +2,7 @@ version: '3.4'
 
 services: 
   auth0.sample.server:
-    image: ${DOCKER_REGISTRY-}auth0sampletestapi
+    image: ${DOCKER_REGISTRY-}auth0sampleserver
     container_name: auth0.sample.server
     build:
       context: .

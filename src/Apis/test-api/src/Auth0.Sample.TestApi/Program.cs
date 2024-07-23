@@ -35,6 +35,11 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapGet("api/test",() =>
+{
+    return new  { Message = "Request Authorized." };
+}).RequireAuthorization();
+
 app.MapControllers();
 
 app.Run();

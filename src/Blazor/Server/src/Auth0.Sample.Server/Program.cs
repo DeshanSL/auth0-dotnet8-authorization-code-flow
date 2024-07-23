@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-
+builder.Services.AddHttpContextAccessor();
 // Add auth0 authentication
 builder.Services.AddAuth0WebAppAuthentication(options =>
 {

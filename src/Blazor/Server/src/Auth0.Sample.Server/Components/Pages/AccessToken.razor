@@ -1,0 +1,93 @@
+﻿@page "/access-token"
+@using Microsoft.AspNetCore.Authentication
+@using System.Text.Json
+@using System.Net.Http.Headers
+@using System.Net
+@inject IHttpContextAccessor httpContextAccessor
+@rendermode @(new InteractiveServerRenderMode(false))
+
+<p>@token</p>
+
+<b>External API requests</b>
+<br />
+<br />
+<button @onclick="GetResponseAuthorizedAsync">Call API with Access Token /api/test</button>
+<br />
+<br />
+<button @onclick="GetResponseUnauthorizedAsync">Call API without Access Token /api/test</button>
+<br />
+<br />
+<b>Status Code</b>
+<br />
+@if(state is not null)
+{
+    @state
+}
+<br />
+<br />
+<b>Response</b>
+<br />
+@if (response is not null)
+{
+    @JsonSerializer.Serialize(response)
+    
+}
+
+@code {
+    private string? token = string.Empty;
+    private Response? response = default;
+    private HttpStatusCode? state = null;
+
+    protected async override Task OnInitializedAsync()
+    {
+        token = await httpContextAccessor.HttpContext!.GetTokenAsync("access_token");
+    }
+
+    public async Task GetResponseAuthorizedAsync()
+    {
+        response = null;
+        state = null;
+        using (var http = new HttpClient())
+        {
+            http.BaseAddress = new Uri("http://host.docker.internal:8100/");
+            http.DefaultRequestHeaders.Authorization =
+     new AuthenticationHeaderValue("Bearer", token);
+
+            var result = await http.GetAsync("api/test");
+            state = result.StatusCode;
+
+            Console.WriteLine(result.StatusCode);
+
+            if (result.IsSuccessStatusCode)
+            {
+                response = await result.Content.ReadFromJsonAsync<Response>();
+            }
+        }
+    }
+
+    public async Task GetResponseUnauthorizedAsync()
+    {
+
+        response = null;
+        state = null;
+        using (var http = new HttpClient())
+        {
+            http.BaseAddress = new Uri("http://host.docker.internal:8100/");
+
+            var result = await http.GetAsync("api/test");
+            state = result.StatusCode;
+
+            if (result.IsSuccessStatusCode)
+            {
+                response = await result.Content.ReadFromJsonAsync<Response>();
+            }
+            StateHasChanged();
+        }
+    }
+    public class Response
+    {
+        public string Message { get; set; } = string.Empty;
+    }
+
+}
+
