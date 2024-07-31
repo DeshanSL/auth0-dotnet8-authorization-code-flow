@@ -6,15 +6,15 @@
 @inject IHttpContextAccessor httpContextAccessor
 @rendermode @(new InteractiveServerRenderMode(false))
 
-<p>@token</p>
-
+<MudTextField Label="JWT Token" T="string" Variant=Variant.Outlined @bind-Value=token></MudTextField>
+<br />
 <b>External API requests</b>
 <br />
 <br />
-<button @onclick="GetResponseAuthorizedAsync">Call API with Access Token /api/test</button>
+<MudButton @onclick="GetResponseAuthorizedAsync">Call API with Access Token /api/test</MudButton>
 <br />
 <br />
-<button @onclick="GetResponseUnauthorizedAsync">Call API without Access Token /api/test</button>
+<MudButton @onclick="GetResponseUnauthorizedAsync">Call API without Access Token /api/test</MudButton>
 <br />
 <br />
 <b>Status Code</b>
@@ -29,7 +29,9 @@
 <br />
 @if (response is not null)
 {
-    @JsonSerializer.Serialize(response)
+    <pre>
+        @(JsonSerializer.Serialize(response, new JsonSerializerOptions() { WriteIndented = true }))
+    </pre>
     
 }
 
@@ -56,7 +58,6 @@
             var result = await http.GetAsync("api/test");
             state = result.StatusCode;
 
-            Console.WriteLine(result.StatusCode);
 
             if (result.IsSuccessStatusCode)
             {

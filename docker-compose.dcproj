@@ -6,8 +6,8 @@
     <DockerPublishLocally>False</DockerPublishLocally>
     <ProjectGuid>1e632df5-26d5-47b7-b8b7-05d8ae0dd135</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>auth0.sample.testapi</DockerServiceName>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/</DockerServiceUrl>
+    <DockerServiceName>auth0.sample.server</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">
