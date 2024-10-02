@@ -15,10 +15,16 @@ This repository provides a practical example of integrating **Auth0** with a **.
 - Example of **Middleware Integration** for authentication.
 - Demonstrates usage of **user profile data** from **Auth0**.
 
+## How to start via docker compose
+- Navigate to the root folder
+- docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d --build
+  
 
 ## Blazor web app URL - docker compose
 
 https://localhost:7001/
+
+
 
 
 
