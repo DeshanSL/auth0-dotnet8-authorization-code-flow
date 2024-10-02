@@ -16,6 +16,7 @@ This repository provides a practical example of integrating **Auth0** with a **.
 - Demonstrates usage of **user profile data** from **Auth0**.
 
 ## How to start via docker compose
+- Modify the auth0 tenant (clientId, Secret) in appsettings and the issuer/audience in the sample api
 - Navigate to the root folder (cmd/ps/terminal)
 - docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d --build
   
